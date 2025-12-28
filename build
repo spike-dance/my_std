@@ -1,0 +1,6 @@
+#!/bin/bash
+echo "\nClonning header\n"
+cp -r ./my_std.h /usr/include/my_std.h
+echo "\nCompiling shared library\n"
+gcc my_std.c -o /lib/libmy_std.so -shared
+
