@@ -1,13 +1,10 @@
 #ifndef MY_STD_H
 #define MY_STD_H
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <stdint.h>
-#include <stdbool.h>
 
-#define MAX(x, y) x > y : x ? y
-#define MIN(x, y) x < y : x ? y
+#define MAX(x, y) (x > y : x ? y)
+#define MIN(x, y) (x < y : x ? y)
 
 typedef uint8_t u8;
 typedef uint16_t u16;
@@ -26,7 +23,8 @@ typedef enum
         FILE_EMPTY,
 
         ALLOC_ERROR,
-        FILE_ACCES_FAILED,
+        FILE_ACCESS_FAILED,
+        CREATION_FAILED
 } Error_enum;
 
 typedef struct
@@ -37,6 +35,13 @@ typedef struct
 } String;
 
 #define STRING_ALLOC(x) {.size = x, .buffer = malloc(x)}
+
+#define ANSI_RED_TEXT(x) "\e[0;31m" x "\e[0m"
+#define ANSI_GREEN_TEXT(x) "\e[0;32m" x "\e[0m"
+#define ANSI_YELLOW_TEXT(x) "\e[0;33m" x "\e[0m"
+#define ANSI_BLUE_TEXT(x) "\e[0;34m" x "\e[0m"
+#define ANSI_PURPLE_TEXT(x) "\e[0;35m" x "\e[0m"
+#define ANSI_CYAN_TEXT(x) "\e[0;36m" x "\e[0m"
 
 extern String read_file(char* file_path);
 

@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include <my_std.h>
 
 String read_file(char* file_path)
@@ -6,7 +8,7 @@ String read_file(char* file_path)
         FILE* file = fopen(file_path, "r");
         if(file == NULL)
         {
-                file_content.error = FILE_ACCES_FAILED;
+                file_content.error = FILE_ACCESS_FAILED;
                 return file_content;
         }
 
