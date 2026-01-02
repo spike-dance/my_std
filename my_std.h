@@ -11,10 +11,20 @@ typedef uint16_t u16;
 typedef uint32_t u32;
 typedef uint64_t u64;
 
-typedef int8_t s8;
-typedef int16_t s16;
-typedef int32_t s32;
-typedef int64_t s64;
+typedef int8_t i8;
+typedef int16_t i16;
+typedef int32_t i32;
+typedef int64_t i64;
+
+typedef const uint8_t cu8;
+typedef const uint16_t cu16;
+typedef const uint32_t cu32;
+typedef const uint64_t cu64;
+
+typedef const int8_t ci8;
+typedef const int16_t ci16;
+typedef const int32_t ci32;
+typedef const int64_t ci64;
 
 typedef enum
 {
@@ -25,16 +35,16 @@ typedef enum
         ALLOC_ERROR,
         FILE_ACCESS_FAILED,
         CREATION_FAILED
-} Error_enum;
+} E_error;
 
 typedef struct
 {
-        size_t size;
-        void* buffer;
-        Error_enum error;
-} String;
+        u32 u32Size;
+        void* pBuffer;
+        E_error eError;
+} S_string;
 
-#define STRING_ALLOC(x) {.size = x, .buffer = malloc(x)}
+#define STRING_ALLOC(x) {.u32Size = x, .pBuffer = malloc(x)}
 
 #define ANSI_RED_TEXT(x) "\e[0;31m" x "\e[0m"
 #define ANSI_GREEN_TEXT(x) "\e[0;32m" x "\e[0m"
@@ -43,6 +53,6 @@ typedef struct
 #define ANSI_PURPLE_TEXT(x) "\e[0;35m" x "\e[0m"
 #define ANSI_CYAN_TEXT(x) "\e[0;36m" x "\e[0m"
 
-extern String read_file(char* file_path);
+extern S_string read_file(const u8* cvu8FilePath);
 
 #endif

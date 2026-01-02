@@ -2,34 +2,35 @@
 #include <stdlib.h>
 #include <my_std.h>
 
-String read_file(char* file_path)
+S_string read_file(const u8* cvu8FilePath)
 {
-        String file_content = {0};
-        FILE* file = fopen(file_path, "r");
-        if(file == NULL)
+        S_string sFileContent = {0};
+        FILE* iofFile = fopen(cvu8FilePath, "r");
+        if(iofFile == NULL)
         {
-                file_content.error = FILE_ACCESS_FAILED;
-                return file_content;
+                sFileContent.eError = FILE_ACCESS_FAILED;
+                return sFileContent;
         }
 
-        fseek(file, 0, SEEK_END);
-        file_content.size = ftell(file);
-        fseek(file, 0, SEEK_SET);
+        fseek(iofFile, 0, SEEK_END);
+        sFileContent.u32Size = ftell(iofFile);
+        fseek(iofFile, 0, SEEK_SET);
 
-        if(file_content.size == 0)
+        if(sFileContent.u32Size == 0)
         {
-                file_content.error = FILE_EMPTY;
-                return file_content;
+                sFileContent.eError = FILE_EMPTY;
+                return sFileContent;
         }
 
-        file_content.buffer = malloc(file_content.size);
-        if(file_content.buffer == NULL)
+        sFileContent.pBuffer = malloc(sFileContent.u32Size);
+        if(sFileContent.pBuffer == NULL)
         {
-                file_content.error = ALLOC_ERROR;
-                return file_content;
+                sFileContent.eError = ALLOC_ERROR;
+                return sFileContent;
         }
 
-        fread(file_content.buffer, 1, file_content.size, file);
+        fread(sFileContent.pBuffer, 1, sFileContent.u32Size, iofFile);
 
-        return file_content;
+        fclose(iofFile);
+        return sFileContent;
 }
