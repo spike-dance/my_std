@@ -39,9 +39,9 @@ typedef enum
 
 typedef struct
 {
-        u32 u32Size;
-        void* pBuffer;
-        E_error eError;
+        u32 size;
+        void* p_buffer;
+        E_error e_error;
 } S_string;
 
 #define STRING_ALLOC(x) {.u32Size = x, .pBuffer = malloc(x)}
@@ -53,6 +53,6 @@ typedef struct
 #define ANSI_PURPLE_TEXT(x) "\e[0;35m" x "\e[0m"
 #define ANSI_CYAN_TEXT(x) "\e[0;36m" x "\e[0m"
 
-extern S_string read_file(const u8* cvu8FilePath);
+extern S_string read_file(const char* cv_filePath);
 
 #endif

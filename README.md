@@ -16,9 +16,9 @@ Here are my write standard :
 
 ### Variable
 
-|global variable|const  |pointeur/vector|struct/union/enum/type |variable name  |
-|:--------------|-------|:--------------|:----------------------|:--------------|
-|g              |c      |p/v            |s/n/e/type             |VariableName   |
+|global variable|const  |pointeur/vector|struct/union/enum |variable name  |
+|:--------------|-------|:--------------|:-----------------|:--------------|
+|g              |c      |p/v            |s/n/e             |_variableName  |
 
 ### Type
 
@@ -40,3 +40,7 @@ PFN_ + function name or a description of the type of function to point
 ### Preprocessor
 
 All in capitale letter.
+
+### Function
+
+All function just start with fn_

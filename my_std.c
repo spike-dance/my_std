@@ -2,35 +2,35 @@
 #include <stdlib.h>
 #include <my_std.h>
 
-S_string read_file(const u8* cvu8FilePath)
+S_string read_file(const char* cv_filePath)
 {
-        S_string sFileContent = {0};
-        FILE* iofFile = fopen(cvu8FilePath, "r");
-        if(iofFile == NULL)
+        S_string s_fileContent = {0};
+        FILE* iof_file = fopen(cv_filePath, "r");
+        if(iof_file == NULL)
         {
-                sFileContent.eError = FILE_ACCESS_FAILED;
-                return sFileContent;
+                s_fileContent.e_error = FILE_ACCESS_FAILED;
+                return s_fileContent;
         }
 
-        fseek(iofFile, 0, SEEK_END);
-        sFileContent.u32Size = ftell(iofFile);
-        fseek(iofFile, 0, SEEK_SET);
+        fseek(iof_file, 0, SEEK_END);
+        s_fileContent.size = ftell(iof_file);
+        fseek(iof_file, 0, SEEK_SET);
 
-        if(sFileContent.u32Size == 0)
+        if(s_fileContent.size == 0)
         {
-                sFileContent.eError = FILE_EMPTY;
-                return sFileContent;
+                s_fileContent.e_error = FILE_EMPTY;
+                return s_fileContent;
         }
 
-        sFileContent.pBuffer = malloc(sFileContent.u32Size);
-        if(sFileContent.pBuffer == NULL)
+        s_fileContent.p_buffer = malloc(s_fileContent.size);
+        if(s_fileContent.p_buffer == NULL)
         {
-                sFileContent.eError = ALLOC_ERROR;
-                return sFileContent;
+                s_fileContent.e_error = ALLOC_ERROR;
+                return s_fileContent;
         }
 
-        fread(sFileContent.pBuffer, 1, sFileContent.u32Size, iofFile);
+        fread(s_fileContent.p_buffer, 1, s_fileContent.size, iof_file);
 
-        fclose(iofFile);
-        return sFileContent;
+        fclose(iof_file);
+        return s_fileContent;
 }
