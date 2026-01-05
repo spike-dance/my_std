@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include <my_std.h>
 
-S_string read_file(const char* cv_filePath)
+S_string fn_readFile(const char* cv_filePath)
 {
         S_string s_fileContent = {0};
         FILE* iof_file = fopen(cv_filePath, "r");
         if(iof_file == NULL)
         {
-                s_fileContent.e_error = FILE_ACCESS_FAILED;
+                s_fileContent.error = FILE_ACCESS_FAILED;
                 return s_fileContent;
         }
 
@@ -18,14 +18,14 @@ S_string read_file(const char* cv_filePath)
 
         if(s_fileContent.size == 0)
         {
-                s_fileContent.e_error = FILE_EMPTY;
+                s_fileContent.error = FILE_EMPTY;
                 return s_fileContent;
         }
 
         s_fileContent.p_buffer = malloc(s_fileContent.size);
         if(s_fileContent.p_buffer == NULL)
         {
-                s_fileContent.e_error = ALLOC_ERROR;
+                s_fileContent.error = ALLOC_ERROR;
                 return s_fileContent;
         }
 

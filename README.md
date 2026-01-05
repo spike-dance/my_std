@@ -16,9 +16,9 @@ Here are my write standard :
 
 ### Variable
 
-|global variable|const  |pointeur/vector|struct/union/enum |variable name  |
-|:--------------|-------|:--------------|:-----------------|:--------------|
-|g              |c      |p/v            |s/n/e             |_variableName  |
+|global variable|const  |pointeur/vector/function pointeur |struct/union |variable name  |
+|:--------------|-------|:---------------------------------|:------------|:--------------|
+|g              |c      |p/v/pfn                           |s/n          |_variableName  |
 
 ### Type
 
@@ -44,3 +44,7 @@ All in capitale letter.
 ### Function
 
 All function just start with fn_
+
+### goto
+
+All goto are in capitale letter and start with GO_ and if it's to quit a function GO_END_

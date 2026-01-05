@@ -41,10 +41,8 @@ typedef struct
 {
         u32 size;
         void* p_buffer;
-        E_error e_error;
+        E_error error;
 } S_string;
-
-#define STRING_ALLOC(x) {.u32Size = x, .pBuffer = malloc(x)}
 
 #define ANSI_RED_TEXT(x) "\e[0;31m" x "\e[0m"
 #define ANSI_GREEN_TEXT(x) "\e[0;32m" x "\e[0m"
@@ -53,6 +51,6 @@ typedef struct
 #define ANSI_PURPLE_TEXT(x) "\e[0;35m" x "\e[0m"
 #define ANSI_CYAN_TEXT(x) "\e[0;36m" x "\e[0m"
 
-extern S_string read_file(const char* cv_filePath);
+extern S_string fn_readFile(const char* cv_filePath);
 
 #endif
